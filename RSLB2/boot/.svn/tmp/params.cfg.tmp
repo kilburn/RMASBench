@@ -1,0 +1,15 @@
+assignment_group: AAMAS12
+base_package: RSLBench
+<<<<<<< .mine
+assignment_class: DSA
+DSA_CHANGE_VALUE_PROBABILITY: 0.7
+experiment_start_time: 30 40 50
+number_of_considered_targets: -1
+number_of_cycles: 100
+=======
+assignment_class: MaxSum2
+MaxSum2_NUMBER_OF_NEIGHBOURS: 3
+experiment_start_time: 30
+number_of_considered_targets: -1
+number_of_cycles: 100
+>>>>>>> .r33

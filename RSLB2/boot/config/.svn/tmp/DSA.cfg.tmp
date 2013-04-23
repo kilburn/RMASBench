@@ -1,0 +1,16 @@
+!include common.cfg
+<<<<<<< .mine
+number_of_cycles: 100
+number_of_considered_targets: -1
+experiment_start_time: 40
+DSA_CHANGE_VALUE_PROBABILITY: 0.7
+assignment_class: DSA
+=======
+number_of_cycles: 100
+number_of_considered_targets: -1
+experiment_start_time: 30
+DSA_CHANGE_VALUE_PROBABILITY: 0.7
+assignment_class: DSA
+>>>>>>> .r33
+base_package: RSLBench
+assignment_group: AAMAS12

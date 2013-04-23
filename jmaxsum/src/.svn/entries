@@ -1,0 +1,73 @@
+10
+
+dir
+39
+svn://fabio@carol.ida.liu.se/home/alex/svn_rmasbench/trunk/jmaxsum/src
+svn://fabio@carol.ida.liu.se/home/alex/svn_rmasbench
+
+
+
+2012-12-14T00:11:52.297162Z
+26
+fabio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+59d0ee45-0882-4911-a863-736f3f71173f
+
+hacks
+dir
+
+misc
+dir
+
+exception
+dir
+
+olimpo
+dir
+
+META-INF
+dir
+
+factorgraph
+dir
+
+operation
+dir
+
+powerGrid
+dir
+
+jargs
+dir
+
+messages
+dir
+
+maxsum
+dir
+
+boundedMaxSum
+dir
+
+test
+dir
+
+system
+dir
+
+function
+dir
+

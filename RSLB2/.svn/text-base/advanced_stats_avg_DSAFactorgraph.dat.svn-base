@@ -1,0 +1,4 @@
+K ExtinguishTime ExtinguishTimeDeviation NumBurning BurningDeviation NumOnceBurned OnceBurnedDeviation NumDestroyed DestroyedDeviation TotalAreaDestroyed DestroyedAreaDeviation ViolatedConstraints ViolatedConstraintDeviation ComputationTime ComputationTimeDeviation Messages MessagesDeviation MessagesInBytes MessagesDeviation AverageNCCC NCCCDeviation FactorgraphMessages FactorgraphMessagesDeviation
+2 288.5 20.781 128.033 31.3128 468.4 128.34 426.3 103.965 32.1307 9.5395 39.1723 3.81592 27.8629 7.99007 109.505 47.4804 876.042 379.843 164.051 37.7746 0 0
+3 268.6 32.9612 127.189 27.5114 450.6 157.768 393.9 107.231 29.6047 9.93662 33.9689 4.23612 32.9468 7.05814 116.066 40.652 928.531 325.216 156.166 32.6505 0 0
+4 276.3 27.7238 126.247 28.5415 453.9 145.141 398.1 92.1015 29.8707 8.53333 37.1668 3.55624 247.791 60.7687 118.706 16.7645 949.651 134.115 156.63 36.7816 0 0

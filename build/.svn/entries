@@ -1,0 +1,85 @@
+10
+
+dir
+39
+svn://fabio@carol.ida.liu.se/home/alex/svn_rmasbench/trunk/build
+svn://fabio@carol.ida.liu.se/home/alex/svn_rmasbench
+
+
+
+2012-10-11T12:01:39.853184Z
+18
+riccardo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+59d0ee45-0882-4911-a863-736f3f71173f
+
+standard
+dir
+
+findbugs-results
+dir
+
+maps
+dir
+
+traffic3
+dir
+
+collapse
+dir
+
+handy
+dir
+
+gis2
+dir
+
+human
+dir
+
+jars-instrumented
+dir
+
+ignition
+dir
+
+kernel
+dir
+
+rescuecore2
+dir
+
+sample
+dir
+
+cobertura-results
+dir
+
+clear
+dir
+
+junit-results
+dir
+
+misc
+dir
+
+checkstyle-results
+dir
+
+resq-fire
+dir
+

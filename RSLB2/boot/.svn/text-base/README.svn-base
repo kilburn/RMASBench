@@ -1,0 +1,6 @@
+Steps to get your testing going easy
+1. Go in the trunk/RSLB2/boot folder
+2. Modify the params.cfg file according to your wishes (specific instruction in the file)
+3. Compile the Start.java file
+4. Run the Start.class file
+5. The results for each test will be memorized in the boot/results/time_of_the_test folder

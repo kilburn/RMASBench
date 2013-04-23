@@ -1,0 +1,8 @@
+!include common.cfg
+number_of_cycles: 100
+number_of_considered_targets: -1
+experiment_start_time: 30
+MaxSum2_NUMBER_OF_NEIGHBOURS: 2
+assignment_class: MaxSum2
+base_package: RSLBench
+assignment_group: AAMAS12

@@ -1,0 +1,35 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{lscape}
+\title{Statistics table for RMAS_Bench}
+
+\author{Fabio Maffioletti, Riccardo Reffato}
+\date{}
+\begin{document}
+\begin{table}
+\begin{tabular}{| c | c | c | c |}
+\hline
+Metrics / Alg & DSA & DSA-R & MaxSum \\
+\hline
+Extinguish Time & 269.3 [\pm46.36] & 276.3 [\pm27.72] & 232.2 [\pm56.37]\\
+\hline
+Once Burned & 488 [\pm179.04] & 453.9 [\pm145.14] & 347.2 [\pm202.67]\\
+\hline
+Violated Const. & 34.68 [\pm3.43] & 37.17 [\pm3.56] & 16.45 [\pm1.95]\\
+\hline
+Msgs num. & 5419.54 [\pm215.81] & 118.71 [\pm16.76] & 2925.76 [\pm148.86]\\
+\hline
+Msgs bytes & 43356.3 [\pm1726.5] & 949.65 [\pm134.11] & 62360.9[\pm3314.5]\\
+\hline
+NCCC & 132.76 [\pm32.72] & 156.63 [\pm36.78] & 163952[\pm16826.5]\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{table}
+
+
+\end{document}

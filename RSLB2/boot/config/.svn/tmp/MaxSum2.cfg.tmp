@@ -1,0 +1,15 @@
+!include common.cfg
+<<<<<<< .mine
+number_of_cycles: 100
+number_of_considered_targets: -1
+=======
+number_of_cycles: 100
+number_of_considered_targets: -1
+experiment_start_time: 30
+MaxSum2_NUMBER_OF_NEIGHBOURS: 3
+assignment_class: MaxSum2
+>>>>>>> .r33
+MaxSum2_NUMBER_OF_NEIGHBOURS: 2
+assignment_class: MaxSum2
+base_package: RSLBench
+assignment_group: AAMAS12

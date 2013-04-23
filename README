@@ -1,0 +1,6 @@
+Step for testing:
+1. Go into the RSLB2/boot directory
+2. Execute the java -jar start.jar command
+3. Set your chosen parameters and specific algorithm variables
+4. Press start simulation
+5 At the end of each simulation the result can be found in the RSLB2/boot/result/date@hour folder

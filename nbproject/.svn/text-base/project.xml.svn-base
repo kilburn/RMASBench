@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>Robocup rescue simulation software</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>Robocup rescue simulation software</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>Robocup rescue simulation software</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>RSLB2/src</label>
+                    <type>java</type>
+                    <location>RSLB2/src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>build-tools/cobertura-1.9.2/examples/basic/src</label>
+                    <type>java</type>
+                    <location>build-tools/cobertura-1.9.2/examples/basic/src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>jmaxsum/src</label>
+                    <type>java</type>
+                    <location>jmaxsum/src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/misc/src</label>
+                    <type>java</type>
+                    <location>modules/misc/src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>oldsims</label>
+                    <type>java</type>
+                    <location>oldsims</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>stringgame/src</label>
+                    <type>java</type>
+                    <location>stringgame/src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/clear</label>
+                    <type>java</type>
+                    <location>modules/clear</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/collapse</label>
+                    <type>java</type>
+                    <location>modules/collapse</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/gis2</label>
+                    <type>java</type>
+                    <location>modules/gis2</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/handy</label>
+                    <type>java</type>
+                    <location>modules/handy</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/human</label>
+                    <type>java</type>
+                    <location>modules/human</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/ignition</label>
+                    <type>java</type>
+                    <location>modules/ignition</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/kernel</label>
+                    <type>java</type>
+                    <location>modules/kernel</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/maps</label>
+                    <type>java</type>
+                    <location>modules/maps</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/misc</label>
+                    <type>java</type>
+                    <location>modules/misc</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/misc-new</label>
+                    <type>java</type>
+                    <location>modules/misc-new</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/rescuecore2</label>
+                    <type>java</type>
+                    <location>modules/rescuecore2</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/resq-fire</label>
+                    <type>java</type>
+                    <location>modules/resq-fire</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/sample</label>
+                    <type>java</type>
+                    <location>modules/sample</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/standard</label>
+                    <type>java</type>
+                    <location>modules/standard</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/traffic3</label>
+                    <type>java</type>
+                    <location>modules/traffic3</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>RSLB2/boot</label>
+                    <type>java</type>
+                    <location>RSLB2/boot</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>jmaxsum</label>
+                    <type>java</type>
+                    <location>jmaxsum</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <target>compile</target>
+                </action>
+                <action name="clean">
+                    <target>clean</target>
+                </action>
+                <action name="javadoc">
+                    <target>javadoc</target>
+                </action>
+                <action name="run">
+                    <target>run</target>
+                </action>
+                <action name="test">
+                    <target>test</target>
+                </action>
+                <action name="rebuild">
+                    <target>clean</target>
+                    <target>compile</target>
+                </action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>RSLB2/src</label>
+                        <location>RSLB2/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>build-tools/cobertura-1.9.2/examples/basic/src</label>
+                        <location>build-tools/cobertura-1.9.2/examples/basic/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>jmaxsum/src</label>
+                        <location>jmaxsum/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/misc/src</label>
+                        <location>modules/misc/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>oldsims</label>
+                        <location>oldsims</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>stringgame/src</label>
+                        <location>stringgame/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/clear</label>
+                        <location>modules/clear</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/collapse</label>
+                        <location>modules/collapse</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/gis2</label>
+                        <location>modules/gis2</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/handy</label>
+                        <location>modules/handy</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/human</label>
+                        <location>modules/human</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/ignition</label>
+                        <location>modules/ignition</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/kernel</label>
+                        <location>modules/kernel</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/maps</label>
+                        <location>modules/maps</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/misc</label>
+                        <location>modules/misc</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/misc-new</label>
+                        <location>modules/misc-new</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/rescuecore2</label>
+                        <location>modules/rescuecore2</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/resq-fire</label>
+                        <location>modules/resq-fire</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/sample</label>
+                        <location>modules/sample</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/standard</label>
+                        <location>modules/standard</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/traffic3</label>
+                        <location>modules/traffic3</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>RSLB2/boot</label>
+                        <location>RSLB2/boot</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>jmaxsum</label>
+                        <location>jmaxsum</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="javadoc"/>
+                    <ide-action name="run"/>
+                    <ide-action name="test"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
+            <compilation-unit>
+                <package-root>RSLB2/src</package-root>
+                <package-root>build-tools/cobertura-1.9.2/examples/basic/src</package-root>
+                <package-root>jmaxsum/src</package-root>
+                <package-root>modules/misc/src</package-root>
+                <package-root>oldsims</package-root>
+                <package-root>stringgame/src</package-root>
+                <package-root>modules/clear</package-root>
+                <package-root>modules/collapse</package-root>
+                <package-root>modules/gis2</package-root>
+                <package-root>modules/handy</package-root>
+                <package-root>modules/human</package-root>
+                <package-root>modules/ignition</package-root>
+                <package-root>modules/kernel</package-root>
+                <package-root>modules/maps</package-root>
+                <package-root>modules/misc</package-root>
+                <package-root>modules/misc-new</package-root>
+                <package-root>modules/rescuecore2</package-root>
+                <package-root>modules/resq-fire</package-root>
+                <package-root>modules/sample</package-root>
+                <package-root>modules/standard</package-root>
+                <package-root>modules/traffic3</package-root>
+                <package-root>RSLB2/boot</package-root>
+                <package-root>jmaxsum</package-root>
+                <classpath mode="compile">jars/clear.jar:jars/collapse.jar:jars/gis2.jar:jars/handy.jar:jars/human.jar:jars/ignition.jar:jars/kernel.jar:jars/maps.jar:jars/maxsum.jar:jars/misc.jar:jars/rescuecore2.jar:jars/resq-fire.jar:jars/sample.jar:jars/SizeOf.jar:jars/standard.jar:jars/traffic3.jar:/home/fabio/netbeans-7.2.1/platform/modules/ext/swing-layout-1.0.4.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

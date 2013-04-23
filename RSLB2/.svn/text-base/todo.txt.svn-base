@@ -1,0 +1,8 @@
+Interface -- TO DO LIST
+
+1. Move the DecentralizedAssignmentSimulator numberofiteration and N (utilityM) to the configfile. //DONE
+2. Create a general config file specifying also the number of times you want the algorithm to run.
+3. Create a new script to make the simulation run for a number of times specified in the config file and generate graphics
+4. Re-implement the ComSimulator in a more general way.
+5. Remove the Params.DSA_CHANGE_VALUE_PROBABILITY from the assignmentInterface (?)
+6. Create the plot script

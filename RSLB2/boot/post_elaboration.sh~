@@ -1,0 +1,8 @@
+#!/bin/bash
+rdir="results/$1";
+echo "Moving results to $rdir";
+mkdir $rdir;
+mv logs/*.dat $rdir/
+echo "Copying config files to $rdir";
+mv config/$2.cfg $rdir/
+cp config/* $rdir
