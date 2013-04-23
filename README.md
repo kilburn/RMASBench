@@ -1,4 +1,4 @@
 RMASBench
 =========
 
-The code of the benchmark will be released by the 22 of April.
+Beta version released on the 23 of April
