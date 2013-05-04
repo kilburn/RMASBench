@@ -55,7 +55,7 @@ public class Params {
      * The number of iterations max that an algorithm can perform before the agents
      * take a definitive decision for each timestep.
      */
-    public static int MAX_ITERATIONS;
+    public static int MAX_ITERATIONS = 100;
     
     /** 
      * Parameters for simulated communication
@@ -82,11 +82,11 @@ public class Params {
      /**
       * The probability that an agent changes his assigned target.
       */
-     public static double DSA_CHANGE_VALUE_PROBABILITY;
+     public static double DSA_CHANGE_VALUE_PROBABILITY = 0.6;
      /**
       * The number of neighbours of an agent in the factograph (the number of considered targets).
       */
-     public static int MaxSum_NUMBER_OF_NEIGHBOURS;
+     public static int MaxSum_NUMBER_OF_NEIGHBOURS = 3;
      
      /**
       * It sets (some of) the params of the Params class according to the specifications in config.

@@ -4,17 +4,25 @@
  * and open the template in the editor.
  */
 import java.awt.TextField;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.layout.*;
+import javax.swing.SwingWorker;
 /**
  * This class a GUI, used to set the necessary options and launch the simulation
  */
 public class RmasGui extends javax.swing.JFrame {
     private HashMap<String, String> algVariables = new HashMap<String, String>();
+    private StartWorker sta; /*= new StartWorker();*/
+    private StopWorker sto = new StopWorker();
     /**
      * Creates new form RmasGui
      */
@@ -25,6 +33,67 @@ public class RmasGui extends javax.swing.JFrame {
         variableValuesLabel.setVisible(false);
         variableValues.setVisible(false);
         variableName.setVisible(false);
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("gui_defaults.cfg"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.charAt(0) != '#') {
+                    String[] content = line.split(":");
+                    String name = content[0];
+                   
+                    if (name.equals("experiment_start_time")) {
+                        try {
+                        start_time.setText(content[1].trim());
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            start_time.setText("");
+                        }
+                    }
+                        else if (name.equals("number_of_cycles")) {
+                        try {
+                        num_cycle.setText(content[1].trim());
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            num_cycle.setText("");
+                        }
+                        }
+                        else if (name.equals("number_of_runs")) {
+                        try {
+                        number_of_runs.setText(content[1].trim());
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            number_of_runs.setText("");
+                        }
+                    }
+                        else if (name.equals("assignment_class")) {
+                        try {
+                        algorithms.setText(content[1].trim());
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            algorithms.setText("");
+                        }
+                    } else {
+                        variableName.addItem(name);
+                    }
+                }
+                }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        try {        
+            BufferedReader in = new BufferedReader(new FileReader("last_map.cfg"));
+            try {
+                String map = in.readLine();
+                mapName.setText(map);
+                fc.setSelectedFile(new File(map));
+            } catch (IOException ex) {
+                Logger.getLogger(RmasGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RmasGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
     /**
@@ -49,14 +118,16 @@ public class RmasGui extends javax.swing.JFrame {
         mapName = new javax.swing.JTextField();
         newVariableButton = new javax.swing.JButton();
         variableAdder = new javax.swing.JButton();
-        variableName = new javax.swing.JTextField();
         variableValues = new javax.swing.JTextField();
         variableNameLabel = new javax.swing.JLabel();
         variableValuesLabel = new javax.swing.JLabel();
         algorithms = new javax.swing.JTextField();
         number_of_runs_label = new javax.swing.JLabel();
         number_of_runs = new javax.swing.JTextField();
+        variableName = new javax.swing.JComboBox();
+        StopButton = new javax.swing.JButton();
 
+        fc.setCurrentDirectory(null);
         fc.setSelectedFile(new java.io.File("/home/fabio/svn_rmasbench/trunk/maps/gml/paris/map.gml"));
         fc.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -75,6 +146,11 @@ public class RmasGui extends javax.swing.JFrame {
         s_time_label.setText("Start times:");
 
         start_time.setText("30 40 50");
+        start_time.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                start_timePropertyChange(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("TeX Gyre Bonum", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -113,15 +189,28 @@ public class RmasGui extends javax.swing.JFrame {
             }
         });
 
-        variableNameLabel.setText("Variable Name:");
+        variableNameLabel.setText("Parameter Name:");
 
-        variableValuesLabel.setText("Variable Values:");
+        variableValuesLabel.setText("Parameter Values:");
 
         algorithms.setText("DSA MaxSum");
 
         number_of_runs_label.setText("Number of runs:");
 
         number_of_runs.setText("1");
+
+        variableName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                variableNameActionPerformed(evt);
+            }
+        });
+
+        StopButton.setText("Stop");
+        StopButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StopButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,22 +222,21 @@ public class RmasGui extends javax.swing.JFrame {
                         .add(0, 0, Short.MAX_VALUE)
                         .add(mapSelector))
                     .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .add(algLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(18, 18, 18)
-                                .add(algorithms, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 158, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(105, 105, 105))
-                            .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                                 .add(14, 14, 14)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                     .add(variableAdder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(layout.createSequentialGroup()
                                         .add(variableValuesLabel)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(variableValues, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 119, Short.MAX_VALUE)))
+                                        .add(variableValues, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                                .add(21, 21, 21)
+                                .add(algLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(3, 3, 3)
+                                .add(algorithms, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 158, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
                                 .add(number_of_runs_label)
@@ -166,7 +254,7 @@ public class RmasGui extends javax.swing.JFrame {
                                 .add(jLabel2)
                                 .add(18, 18, 18)
                                 .add(mapName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .add(156, 160, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -179,11 +267,14 @@ public class RmasGui extends javax.swing.JFrame {
                         .add(18, 18, 18)
                         .add(variableNameLabel)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(variableName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(261, 261, 261)
-                        .add(start_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(variableName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 186, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(167, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(261, 261, 261)
+                .add(start_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(StopButton)
+                .add(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -218,11 +309,14 @@ public class RmasGui extends javax.swing.JFrame {
                             .add(jLabel2)
                             .add(mapName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(18, 18, 18)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(mapSelector)
-                            .add(variableAdder))
-                        .add(28, 28, 28)
-                        .add(start_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 69, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(mapSelector)
+                                    .add(variableAdder))
+                                .add(28, 28, 28)
+                                .add(start_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 69, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(StopButton)))
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(variableNameLabel)
@@ -241,6 +335,7 @@ public class RmasGui extends javax.swing.JFrame {
     private void start_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_start_buttonActionPerformed
         // TODO add your handling code here:
        // Esempio di accesso alle info
+         
          String algs = algorithms.getText();
          //String num_targets = n_targets.getText();
          String n_cycle = num_cycle.getText();
@@ -256,8 +351,8 @@ public class RmasGui extends javax.swing.JFrame {
             out.write("assignment_group: AAMAS12\n");
             out.write("base_package: RSLBench\n");
             out.write("assignment_class: "+algs+"\n");
-            for(String variableName: algVariables.keySet()) {
-                out.write(variableName+": "+algVariables.get(variableName)+"\n");
+            for(String var: algVariables.keySet()) {
+                out.write(var+": "+algVariables.get(var)+"\n");
             }
             out.write("experiment_start_time: "+s_time+"\n");
             //out.write("number_of_considered_targets: "+num_targets+"\n");
@@ -270,12 +365,8 @@ public class RmasGui extends javax.swing.JFrame {
              e.printStackTrace();
          }
          algVariables.clear();
-         try {
-         Start.start("");
-         System.exit(1);
-         } catch (IllegalInputException e) {
-             
-         }
+         sta = new StartWorker();
+         sta.execute();
          
          //richiamo del codice di avvio con dati scelti
     }//GEN-LAST:event_start_buttonActionPerformed
@@ -289,6 +380,14 @@ public class RmasGui extends javax.swing.JFrame {
         if (fc.SELECTED_FILE_CHANGED_PROPERTY.equals(evt.getPropertyName())) {
             try {
                 mapName.setText(fc.getSelectedFile().getPath());
+                try {
+                    BufferedWriter out = new BufferedWriter(new FileWriter(new File("last_map.cfg")));
+                    out.write(fc.getSelectedFile().getPath());
+                    out.flush();
+                    out.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(RmasGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (NullPointerException e) {}
         }   
     }//GEN-LAST:event_selectedFile
@@ -310,13 +409,53 @@ public class RmasGui extends javax.swing.JFrame {
         variableValuesLabel.setVisible(false);
         variableValues.setVisible(false);
         variableName.setVisible(false);
-        if (!variableName.getText().equals("") && !variableValues.getText().equals("")) {
-            algVariables.put(variableName.getText(), variableValues.getText());
+        if (!variableValues.getText().equals("")) {
+            algVariables.put((String)variableName.getSelectedItem(), variableValues.getText());
         }
-        variableName.setText("");
+        
         variableValues.setText("");
         
     }//GEN-LAST:event_addVariableHandler
+
+    private void variableNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variableNameActionPerformed
+        // TODO add your handling code here:
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("gui_defaults.cfg"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                 String[] content = line.split(":");
+                    String name = content[0];
+                    if (name.equals(variableName.getSelectedItem())) {
+                    String values;
+                    try {
+                    values = content[1].trim();
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        values = "";
+                    }
+                        variableValues.setText(values);
+                    
+            }
+            }
+       } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_variableNameActionPerformed
+
+    private void StopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopButtonActionPerformed
+        // TODO add your handling code here:
+        //sto.cancel(true);
+        sta.cancel(true);
+        sto = new StopWorker();
+        sto.execute();
+    }//GEN-LAST:event_StopButtonActionPerformed
+
+    private void start_timePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_start_timePropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_start_timePropertyChange
 
     /**
      * @param args the command line arguments
@@ -353,6 +492,7 @@ public class RmasGui extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton StopButton;
     private javax.swing.JLabel algLabel;
     private javax.swing.JTextField algorithms;
     private javax.swing.JLabel cycle_label;
@@ -369,7 +509,7 @@ public class RmasGui extends javax.swing.JFrame {
     private javax.swing.JButton start_button;
     private javax.swing.JTextField start_time;
     private javax.swing.JButton variableAdder;
-    private javax.swing.JTextField variableName;
+    private javax.swing.JComboBox variableName;
     private javax.swing.JLabel variableNameLabel;
     private javax.swing.JTextField variableValues;
     private javax.swing.JLabel variableValuesLabel;

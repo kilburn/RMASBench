@@ -1,7 +1,7 @@
 assignment_group: AAMAS12
 base_package: RSLBench
-assignment_class: DSA
+assignment_class: DSA MaxSum
 experiment_start_time: 30 40 50
-number_of_considered_targets: -1
+number_of_runs: 1
 number_of_cycles: 100
-DSA_CHANGE_VALUE_PROBABILITY: 0.7
+map_directory: /home/fabio/svn_rmasbench/trunk/maps/gml/paris

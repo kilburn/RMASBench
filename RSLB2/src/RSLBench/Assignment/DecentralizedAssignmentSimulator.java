@@ -57,7 +57,7 @@ public class DecentralizedAssignmentSimulator implements AssignmentInterface
         int assignmentMessages = 0;
         while (!done && iterations < MAX_ITERATIONS)
         {
-
+            /*
                 FileWriter fw2 = null;
                 try {
                     fw2 = new FileWriter("assignment.txt", true);
@@ -65,7 +65,7 @@ public class DecentralizedAssignmentSimulator implements AssignmentInterface
                     fw2.flush();
                     fw2.close();
                         } catch (IOException i) {
-                }
+                }*/
             // statistics
             if (iterations == 1)
             {
@@ -106,13 +106,13 @@ public class DecentralizedAssignmentSimulator implements AssignmentInterface
             totalNccc += nccc;
             iterations++;
             
-            try {
+            /*try {
                     fw2 = new FileWriter("assignment.txt", true);
                     fw2.write("\n");
                     fw2.flush();
                     fw2.close();
                         } catch (IOException i) {
-                }
+                }*/
         }
         _averageNccc = totalNccc / iterations;
         

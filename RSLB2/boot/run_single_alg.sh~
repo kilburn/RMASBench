@@ -15,7 +15,7 @@ cd -;
 echo "... done.";
 # Run simulator
 cd ${RSL_SIM_PATH}/boot;
-xterm -T Simulator -e "./benchmark.sh $SELECTED_MAP" &
+xterm -T Simulator -e "./benchmark.sh $map"
 sleep 10;
 cd -;
 

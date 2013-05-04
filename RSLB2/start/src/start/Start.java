@@ -17,12 +17,13 @@ import java.util.logging.Logger;
  * 
  */
 public class Start {
-    
-    static final String DEFAULT_CONFIG_FILE_NAME = "params.cfg";
-    static final String DEFAULT_ALG_TAG = "assignment_class";
-    static final String DEFAULT_MAP_TAG = "map_directory";
+    static Process p = null; 
+    static boolean stopped = false;
+    static String DEFAULT_CONFIG_FILE_NAME = "params.cfg";
+    static String DEFAULT_ALG_TAG = "assignment_class";
+    static String DEFAULT_MAP_TAG = "map_directory";
     //static final String DEFAULT_ALG = "Dummy";
-    static final String DEFAULT_START_TAG = "experiment_start_time";
+    static String DEFAULT_START_TAG = "experiment_start_time";
     //static final String DEFAULT_START_TIME = "20";
     
     //NUMBER OF TEST FOR EACH COMBINATION OF VALUES
@@ -33,6 +34,7 @@ public class Start {
     static String curAlg;
     static String map = "";
     
+
     /**
      * It starts the simulations.
      * @param filename: the name of the params file
@@ -42,13 +44,16 @@ public class Start {
         initialize(filename);
         int testNumber = number_of_runs;
         String[] curParams = new String[(paramValues.size()) * 2];
-
         for (int i = 0; i < params.size(); i++) {
             testNumber *= paramValues.get(i).length;
         }
         //System.out.println("Numero di test da effettuare: "+testNumber);
-
         for (int i = 0; i < testNumber; i++) {
+            /*if (stopped) {
+                p = null;
+                stopped = false;
+                return;
+            }*/
             writeParams(i, curParams);
             executeCommand();
         }
@@ -60,6 +65,9 @@ public class Start {
      * @throws IllegalInputException 
      */
     private static void initialize(String filename) throws IllegalInputException {
+        params.clear();
+        paramPosition.clear();
+        paramValues.clear();
         int counter = 0;
         try {
             String fileName = "";
@@ -143,6 +151,7 @@ public class Start {
             for (int z = j + 1; z < paramValues.size(); z++) {
                 paramChangeValue *= paramValues.get(z).length;
             }
+            
             if (curTest % paramChangeValue == 0) {
                 curParams[counter] = paramPosition.get(j);
                 counter++;
@@ -153,7 +162,7 @@ public class Start {
         }
 
         String alg = "";
-        
+
         for (int i = 0; i < curParams.length - 1; i++) {
             if (curParams[i].equals(DEFAULT_ALG_TAG)) {
                 alg = curParams[i + 1];
@@ -166,6 +175,7 @@ public class Start {
                 break;
             }
         }
+
         try {
             BufferedWriter out;
             if (!alg.equals("")) {
@@ -195,6 +205,9 @@ public class Start {
      */
     public static void executeCommand() {
         try {
+            /*if (stopped) {
+                return;
+            }*/
             File temp = new File("config_single.sh");
             BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
             bw.write("alg=" + "\"" + curAlg + "\"\n");
@@ -205,7 +218,7 @@ public class Start {
             ProcessBuilder pb = new ProcessBuilder("/bin/bash", "run_single_alg.sh");
             try {
                 pb.redirectErrorStream(true);
-                Process p = pb.start();
+                p = pb.start();
                 BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
                 String line = "";
@@ -213,6 +226,7 @@ public class Start {
                     System.out.println(line);
                 }
                 p.waitFor();
+               
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -220,20 +234,48 @@ public class Start {
             
         } catch (IOException e) {
         }
-        
-        SimpleDateFormat date = new SimpleDateFormat("dd_MM_yy@hh:mm:ss");
+        postElaboration();
 
-        ProcessBuilder pb2 = new ProcessBuilder("./post_elaboration.sh", date.format(new Date()), curAlg);
-        try {
-                pb2.redirectErrorStream(true);
-                Process p = pb2.start();
-                BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
+    }
+    
+    public static void stop() {
+        stopped = true;
+        if (p != null) {
+            try {
+                ProcessBuilder pb2 = new ProcessBuilder("killall", "xterm");
+                Process p2 = pb2.start();
+                p2.waitFor();
+                p.destroy();
+                postElaboration();
+                ProcessBuilder pb3 = new ProcessBuilder("./results/plot.sh");
+                pb3.redirectErrorStream(true);
+                Process p3 = pb3.start();
+                BufferedReader buf = new BufferedReader(new InputStreamReader(p3.getInputStream()));
                 String line = "";
                 while ((line = buf.readLine()) != null) {
                     System.out.println(line);
                 }               
-                p.waitFor();
+                p3.waitFor();
+                //Process pstop = new ProcessBuilder("killall", "java").start();
+                //pstop.waitFor();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public static void postElaboration() {
+        //SimpleDateFormat date = new SimpleDateFormat("dd_MM_yy@hh:mm:ss");
+        ProcessBuilder pbpost = new ProcessBuilder("./post_elaboration.sh", /*date.format(new Date())*/ "test", curAlg);
+        try {
+                pbpost.redirectErrorStream(true);
+                Process ppost = pbpost.start();
+                BufferedReader buf = new BufferedReader(new InputStreamReader(ppost.getInputStream()));
+                String line = "";
+                while ((line = buf.readLine()) != null) {
+                    System.out.println(line);
+                }               
+                ppost.waitFor();
             } catch (Exception e) {
                 e.printStackTrace();
             }

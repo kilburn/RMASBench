@@ -3,7 +3,7 @@
 DIR=`pwd`
 BASEDIR="`cd .. && pwd`"
 LOGDIR="logs"
-MAP="$BASEDIR/maps/gml/paris"
+MAP="$BASEDIR/maps/gml/berlin"
 TEAM=""
 TIMESTAMP_LOGS=""
 CONFIGDIR="$DIR/config"
@@ -20,7 +20,7 @@ fi
 
 # Start the kernel
 ##################
-KERNEL_OPTIONS="-c $CONFIGDIR/kernel.cfg --gis.map.dir=$MAP --kernel.logname=$LOGDIR/rescue.log $* --nomenu --autorun --nogui"
+KERNEL_OPTIONS="-c $CONFIGDIR/kernel.cfg --gis.map.dir=$MAP --kernel.logname=$LOGDIR/rescue.log $* --nomenu --autorun"
 makeClasspath $BASEDIR/jars $BASEDIR/lib
 java -Xmx1024m -cp $CP kernel.StartKernel $KERNEL_OPTIONS 2>&1 | tee $LOGDIR/kernel-out.log &
 PIDS="$PIDS $!"

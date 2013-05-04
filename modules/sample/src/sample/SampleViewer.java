@@ -51,7 +51,7 @@ public class SampleViewer extends StandardViewer {
         super.postConnect();
         int fontSize = config.getIntValue(FONT_SIZE_KEY, DEFAULT_FONT_SIZE);
         String teamName = config.getValue(TEAM_NAME_KEY, "");
-        scoreFunction = makeScoreFunction();
+        //scoreFunction = makeScoreFunction();
         format = NumberFormat.getInstance();
         format.setMaximumFractionDigits(PRECISION);
         JFrame frame = new JFrame("Viewer " + getViewerID() + " (" + model.getAllEntities().size() + " entities)");
@@ -63,23 +63,23 @@ public class SampleViewer extends StandardViewer {
         // CHECKSTYLE:ON:MagicNumber
         timeLabel = new JLabel("Time: Not started", JLabel.CENTER);
         teamLabel = new JLabel(teamName, JLabel.CENTER);
-        scoreLabel = new JLabel("Score: Unknown", JLabel.CENTER);
+        //scoreLabel = new JLabel("Score: Unknown", JLabel.CENTER);
         timeLabel.setBackground(Color.WHITE);
         timeLabel.setOpaque(true);
         timeLabel.setFont(timeLabel.getFont().deriveFont(Font.PLAIN, fontSize));
         teamLabel.setBackground(Color.WHITE);
         teamLabel.setOpaque(true);
         teamLabel.setFont(timeLabel.getFont().deriveFont(Font.PLAIN, fontSize));
-        scoreLabel.setBackground(Color.WHITE);
-        scoreLabel.setOpaque(true);
-        scoreLabel.setFont(timeLabel.getFont().deriveFont(Font.PLAIN, fontSize));
+        //scoreLabel.setBackground(Color.WHITE);
+        //scoreLabel.setOpaque(true);
+        //scoreLabel.setFont(timeLabel.getFont().deriveFont(Font.PLAIN, fontSize));
         frame.add(viewer, BorderLayout.CENTER);
         // CHECKSTYLE:OFF:MagicNumber
         JPanel labels = new JPanel(new GridLayout(1, 3));
         // CHECKSTYLE:ON:MagicNumber
         labels.add(teamLabel);
         labels.add(timeLabel);
-        labels.add(scoreLabel);
+        //labels.add(scoreLabel);
         frame.add(labels, BorderLayout.NORTH);
         frame.pack();
         if (config.getBooleanValue(MAXIMISE_KEY, false)) {
@@ -107,7 +107,7 @@ public class SampleViewer extends StandardViewer {
         SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     timeLabel.setText("Time: " + t.getTime());
-                    scoreLabel.setText("Score: " + format.format(scoreFunction.score(model, new Timestep(t.getTime()))));
+                    //scoreLabel.setText("Score: " + format.format(scoreFunction.score(model, new Timestep(t.getTime()))));
                     viewer.view(model, t.getCommands());
                     viewer.repaint();
                 }

@@ -3,7 +3,7 @@
 DIR=`pwd`
 BASEDIR="`cd .. && pwd`"
 LOGDIR="logs"
-MAP="$BASEDIR/maps/gml/paris"
+MAP="$BASEDIR/maps/gml/berlin"
 TEAM=""
 TIMESTAMP_LOGS=""
 CONFIGDIR="$DIR/config"
