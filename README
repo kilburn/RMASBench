@@ -1,6 +1,7 @@
 Step for testing:
 1. Go into the RSLB2/boot directory
 2. Execute the java -jar start.jar command
-3. Set your chosen parameters and specific algorithm variables
-4. Press start simulation
-5 At the end of each simulation the result can be found in the RSLB2/boot/result/date@hour folder
+3. Set your chosen parameters and specific algorithm variables (defaults can be set in the gui_defaults.cfg)
+4. Press start simulation (if you press the stop button the simulation terminates and it will start again from the beginning if the start button is pressed)
+5. At the end of each simulation the result can be found in the RSLB2/boot/result/test folder
+6. The results are plotted into graphics with the plot.sh script found in the RSLB2/boot/results folder (if you want different graphics you can modify the plot.sh script).
