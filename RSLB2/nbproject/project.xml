@@ -3,6 +3,9 @@
     <type>org.netbeans.modules.ant.freeform</type>
     <configuration>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>RSLBench</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
             <!-- Do not use Project Properties customizer when editing this file manually. -->
             <name>RSLBench</name>
             <properties/>
@@ -11,6 +14,12 @@
                     <label>src</label>
                     <type>java</type>
                     <location>src</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>RSLBench</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
                 </source-folder>
             </folders>
             <ide-actions>
@@ -46,8 +55,8 @@
         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
             <compilation-unit>
                 <package-root>src</package-root>
-                <classpath mode="compile">../jars:../jars/clear.jar:../jars/collapse.jar:../jars/gis2.jar:../jars/handy.jar:../jars/human.jar:../jars/ignition.jar:../jars/kernel.jar:../jars/maps.jar:../jars/maxsum.jar:../jars/misc.jar:../jars/rescuecore2.jar:../jars/resq-fire.jar:../jars/sample.jar:../jars/SizeOf.jar:../jars/standard.jar:../jars/traffic3.jar</classpath>
-                <source-level>1.7</source-level>
+                <classpath mode="compile">../jars:../jars/clear.jar:../jars/collapse.jar:../jars/gis2.jar:../jars/handy.jar:../jars/human.jar:../jars/ignition.jar:../jars/kernel.jar:../jars/maps.jar:../jars/maxsum.jar:../jars/misc.jar:../jars/rescuecore2.jar:../jars/resq-fire.jar:../jars/sample.jar:../jars/SizeOf.jar:../jars/standard.jar:../jars/traffic3.jar:../jars/object-explorer.jar:../jars/BinaryMaxSum.jar</classpath>
+                <source-level>1.6</source-level>
             </compilation-unit>
         </java-data>
     </configuration>

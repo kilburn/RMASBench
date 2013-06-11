@@ -1,0 +1,7 @@
+RSLB2/bin/*
+RSLB2/boot/*.png
+RSLB2/boot/results/**
+**/.svn/**
+jmaxsum/build/**
+boot/logs/**
+**/nbproject/private/**

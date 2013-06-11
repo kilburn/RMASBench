@@ -16,10 +16,10 @@
     </editor-bookmarks>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0">
         <file>
-            <url>src/powerGrid/PowerGrid.java</url>
+            <url>src/system/WalkGrid.java</url>
             <bookmark id="0">
                 <name/>
-                <line>1416</line>
+                <line>477</line>
                 <key/>
             </bookmark>
         </file>
@@ -32,17 +32,12 @@
             </bookmark>
         </file>
         <file>
-            <url>src/system/WalkGrid.java</url>
+            <url>src/powerGrid/PowerGrid.java</url>
             <bookmark id="0">
                 <name/>
-                <line>477</line>
+                <line>1416</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/fabio/svn_rmasbench/trunk/jmaxsum/src/powerGrid/PowerGrid.java</file>
-        <file>file:/home/fabio/svn_rmasbench/trunk/jmaxsum/src/operation/OPlus.java</file>
-        <file>file:/home/fabio/svn_rmasbench/trunk/jmaxsum/src/operation/OPlus_MaxSum.java</file>
-    </open-files>
 </project-private>
