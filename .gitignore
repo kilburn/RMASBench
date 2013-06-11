@@ -1,6 +1,9 @@
 RSLB2/bin/*
 RSLB2/boot/*.png
 RSLB2/boot/results/**
+RSLB2/boot/plot.gps
+RSLB2/boot/config/BinaryMaxSum.cfg
+/boot/rays/**
 **/.svn/**
 jmaxsum/build/**
 boot/logs/**
